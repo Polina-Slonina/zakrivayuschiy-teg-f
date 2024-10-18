@@ -26,7 +26,7 @@
   background-size: cover;
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-variation-settings: 'wdth' var(--main-font), 'wdth' 0, 'opsz' 0;
+  font-variation-settings: 'wdth' var(--weight-normal), 'wdth' 0, 'opsz' 0;
 }
 
 .header {
@@ -200,7 +200,7 @@
 }
 
 .image-effect-invert {
-  filter: invert(33%);
+  filter: invert(33%) saturate(45%);
 }
 
 .card__content-images {
@@ -402,7 +402,7 @@
   background-color: var(--bg-color, #000);
 }
 
-.footer__floppy { 
+.footer__floppy {
   width: 21px;
   height: 21px;
   mix-blend-mode: difference;
