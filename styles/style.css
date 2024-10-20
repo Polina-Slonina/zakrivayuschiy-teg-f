@@ -361,10 +361,9 @@
   margin-block-start: 30px;
 }
 
-.dialog__button { 
+.dialog__button {
   border: var(--border-block);
   padding: 9px 17px;
-  /* line-height: 0.9; */
   text-transform: uppercase;
   background-color: transparent;
   inline-size: 100%;
