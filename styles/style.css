@@ -325,6 +325,7 @@
 .dialog[open] {
   display: grid;
   grid-template-columns: min-content 1fr;
+  grid-template-rows: min-content min-content;
   align-items: center;
   border: var(--border-block);
   padding: 32px;
