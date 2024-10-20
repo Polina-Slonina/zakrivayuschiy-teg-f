@@ -33,10 +33,11 @@
 .header {
   margin-block-start: 100px;
   padding-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
-  font-family: var(--accent-font, sans-serif);
+  font-family: var(--accent-font, "fantasy");
   font-weight: 400;
   text-transform: uppercase;
   background-color: var(--bg-color, #000);
+  border: var(--border-block);
 }
 
 .wrapper {
@@ -52,6 +53,10 @@
   font-weight: inherit;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-decoration: none;
+}
+
+.header__logo:focus-visible {
+  outline: none;
 }
 
 .header__title {
@@ -77,6 +82,8 @@
 .theme-menu__button {
   position: relative;
   text-transform: inherit;
+  transition: 0.3s ease;
+  transform-origin: left;
 }
 
 .theme-menu__button:disabled {
@@ -86,9 +93,7 @@
 
 .theme-menu__button:hover {
   opacity: 0.6;
-  transition: 0.3s ease;
-  transform-origin: left;
-}
+} 
 
 .theme-menu__button::after {
   content: '';
@@ -112,7 +117,7 @@
 
 .theme-menu__button:focus-visible {
   opacity: 0.6;
-  transition: 0.3s ease;
+  /* transition: 0.3s ease; */
 }
 
 .theme-menu__button:focus {
@@ -140,15 +145,6 @@
   }
 }
 
-@keyframes loading {
-  from {
-    inset-inline-start: -12px;
-  }
-  to {
-    inset-inline-start: -8px;
-  }
-}
-
 .content {
   margin-block-start: 102px;
   font-size: 18px;
@@ -162,18 +158,27 @@
 .card__conteiner {
   display: flex;
   flex-direction: column;
-  border: 2px solid currentColor;
+  border: var(--border-block);
   background-color: var(--bg-color, #000);
 }
 
 .card__content__list-title {
   padding: 5px 10px;
-  font-weight: var(--weight-bold);
+  font-variation-settings: 'wght' var(--weight-bold, 785);
   font-size: inherit;
 }
 
 .card__contaner__images {
   position: relative;
+  border-top: var(--border-block);
+  border-bottom: var(--border-block);
+}
+
+.card__content-images {
+  display: block;
+  object-fit: cover;
+  inline-size: 100%;
+  aspect-ratio: 1/1;
 }
 
 .image-effect-contrast {
@@ -204,21 +209,14 @@
   filter: invert(33%) saturate(45%);
 }
 
-.card__content-images {
-  display: block;
-  object-fit: cover;
-  inline-size: 100%;
-  aspect-ratio: 1/1;
-}
-
 .card__content-label {
   position: absolute;
   opacity: 0.5;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font, 'fantasy');
   font-size: 14px;
   text-transform: uppercase;
   text-shadow:
-    -1px 0 var(--stroke-color), 
+   -1px 0 var(--stroke-color), 
    0 1px var(--stroke-color), 
    1px 0 var(--stroke-color), 
    0 -1px var(--stroke-color);
@@ -245,7 +243,7 @@
 .button__group {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 2px;
   align-self: end;
   margin-inline-end: 26px;
   margin-block-start: 22px;
@@ -255,105 +253,19 @@
 .card__icon-button {
   align-self: end;
   border: none;
-}
-
-.card__icon-button:focus-visible {
-  border: 2px solid currentColor;
   transition: 0.3s ease;
 }
 
-.like-icon {
-  width: 35px;
-  height: 32px;
-}
-
-.like-icon .core {
-  fill: transparent;
-  transition: 0.3s ease 0.03;
-}
-
-.like-icon .main-body {
-  fill: transparent;
-  transition: 0.3s ease 0.05s;
-}
-
-.like-icon:hover .core {
-  fill: var(--like-color);
-  transition: 0.3s ease 0.03;
-}
-
-.like-icon:hover .main-body {
-  fill: var(--like-color);
-  transition: 0.3s ease 0.05s;
-}
-
-.like-icon:active .core {
-  fill: var(--like-accent-color);
-  transition: 0.3s ease 0.03;
-}
-
-.like-icon:active .main-body {
-  fill: var(--like-accent-color);
-  transition: 0.3s ease 0.05s;
-}
-
-.like-icon.is-liked .core {
-  fill: var(--like-accent-color);
-  transition: 0.3s ease 0.05s;
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--like-accent-color);
-  transition: 0.3s ease 0.05s;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--like-accent-color);
-  transition: 0.3s ease 0.06s;
-}
-
-.like-icon .contour {
-  fill: var(--like-color);
-  transition: 0.1s ease linear;
-}
-
-.like-icon.is-liked .heart {
-  animation: scale-heart 0.3s ease-in alternate 0.1s;
-}
-
-@keyframes scale-heart {
-  from {
-    transform-origin: center;
-    scale: 1;
-  }
-  to {
-   transform-origin: center;
-   scale: 1.5;
-  }
-}
-
-.sparks {
-  opacity: 0;
-}
-
-.like-icon.is-liked .sparks {
-  animation: opacity-sparks 0.3s ease-in alternate 0.3s;
-}
-
-@keyframes opacity-sparks {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+.card__icon-button:focus-visible {
+  border: var(--border-block);
 }
 
 .card__like-button {
   position: relative;
   display: block;
-  border: 2px solid currentColor;
-  padding: 12px 35px;
+  border: var(--border-block);
+  padding: 12px 22px;
+  inline-size: 130px;
 }
 
 .button__text {
@@ -361,7 +273,7 @@
   z-index: 1;
   display: block;
   color: var(--button-color);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font,'fantasy');
   line-height: 90%;
   white-space: nowrap;
   mix-blend-mode: difference;
@@ -390,7 +302,7 @@
   transition: 0.3s ease;
 }
 
-.footer__button {
+.section__save__button {
   position: relative;
   display: flex;
   align-items: center;
@@ -401,24 +313,23 @@
   padding: 17px 18px;
   color: var(--button-color);
   background-color: var(--bg-color, #000);
+  margin-block-end: 100px;
 }
 
-.footer__floppy {
+.section__save__floppy {
   width: 21px;
   height: 21px;
   mix-blend-mode: difference;
 }
 
 .dialog[open] {
-  position: fixed;
-  inset: 0;
   display: grid;
   grid-template-columns: min-content 1fr;
-  grid-template-rows: 1fr max-content;
-  border: 2px solid currentColor;
+  align-items: center;
+  border: var(--border-block);
   padding: 32px;
   color: currentColor;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font, 'fantasy');
   font-weight: 400;
   font-size: 14px;
   background-color: var(--bg-color);
@@ -426,8 +337,7 @@
 }
 
 .dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.3);
-  backdrop-filter: blur(7px);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .dialog__floppy {
@@ -445,14 +355,15 @@
 }
 
 .dialog__button-close {
+  position: relative;
   grid-column: 1 / -1;
+  margin-block-start: 30px;
 }
 
-.dialog__button {
-  margin-block-start: 30px;
-  border: 2px solid currentColor;
+.dialog__button { 
+  border: var(--border-block);
   padding: 9px 17px;
-  line-height: 0.9;
+  /* line-height: 0.9; */
   text-transform: uppercase;
   background-color: transparent;
   inline-size: 100%;
@@ -462,10 +373,10 @@
   .wrapper {
     inline-size: 100vw;
   }
-  .footer__button {
+  .section__save__button {
     flex-direction: column;
   }
-  .footer__floppy {
+  .section__save__floppy {
     width: 28px;
     height: 28px;
   }
